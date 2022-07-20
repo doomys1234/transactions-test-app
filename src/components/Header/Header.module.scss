@@ -1,0 +1,66 @@
+
+
+
+.container{
+    padding: 20px ;
+    display: flex;
+    color: orange;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid pink;
+    border-radius: 20px;
+    
+    
+}
+
+.user{
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+
+}
+.welcome{
+    margin-right: 30px;
+    color: pink;
+}
+.wrapper{
+    display: flex;
+    align-items: center
+;}
+.title{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 20px;
+}
+.nav{
+    padding: 20px;
+}
+
+.link{
+    padding: 5px 20px;
+    color: black;
+    border: 2px solid rgba(164, 157, 143, 0.403);
+    border-radius: 5px;
+    text-decoration: none;
+    margin-right: 40px;
+    &:hover{
+        transform: scale(1.1);
+        border: 2px solid pink;
+        border-radius: 5px;
+        color: pink;
+
+    }
+}
+
+.active_link{
+    padding: 5px 20px;
+    text-decoration: none;
+    margin-right: 40px;
+    color: orange;
+    // background-color: rgba(255, 239, 208, 0.403);
+    border-bottom: 2px solid orange;
+    // border-radius: 5px;
+    
+        
+
+}
