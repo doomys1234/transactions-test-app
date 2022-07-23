@@ -1,8 +1,8 @@
 import { put, takeEvery, call } from "redux-saga/effects";
-import { setData, setInitialData } from "./dataSlice";
+import { setInitialData,  } from "./dataSlice";
 import axios from "axios";
 
-const getInitialData = (payload) => {
+const getInitialData = () => {
   return axios.get("https://627bcd4fa01c46a85325be85.mockapi.io/doomys1234/transactions");
 }
 

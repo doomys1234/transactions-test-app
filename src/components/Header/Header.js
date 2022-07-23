@@ -18,7 +18,8 @@ export default function Header() {
 
   
     const handleLogOut = () => {
-        dispatch(logOutUser());
+      dispatch(logOutUser());
+      localStorage.removeItem("user")
         if (error) {
             return
         }

@@ -44,9 +44,9 @@ function* loginUserWorker({ payload }) {
     }
 }
 
-function* logOutWorker({ payload }) {
+function* logOutWorker() {
     try {
-        yield call(logOutUser, payload);
+        yield call(logOutUser);
         token.unset()
         yield put(logOut())
 

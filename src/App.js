@@ -7,9 +7,8 @@ import RegisterPage from './components/RegisterPage/RegisterPage';
 import LoginPage from './components/LoginPage/LoginPage';
 import Header from './components/Header/Header';
 
-import s from './App.module.scss';
 import Transactions from './components/Transactions/Transactions';
-// import ContactsPage from 'components/ContactsPage/ContactsPage';
+
 
 function App() {
   return (

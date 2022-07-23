@@ -27,7 +27,7 @@ const sagaMiddleware = createSagaMiddleware();
 export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authReducer),
-    data: dataReducer,
+    data: persistReducer(persistConfig, dataReducer),
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -23,9 +23,9 @@ export default function Pagination({lengthOfArr }) {
         <>
             <div>
                 <div className={s.wrapper}>
-                    <button type="button" onClick={decrementClick}>Prev page</button>
+                    <button className={s.button} type="button" onClick={decrementClick}>Prev page</button>
                     <span>{currentPage} out of {lengthOfArr}</span>
-                    <button type="button" onClick={incrementClick}>Next page</button>
+                    <button className={s.button} type="button" onClick={incrementClick}>Next page</button>
                 </div>
             </div>
         </>

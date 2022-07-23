@@ -4,6 +4,7 @@ import { getStatus } from "../../redux/auth/authSelectors";
 import { setData, setFileName } from "../../redux/data/dataSlice";
 import {
   getCurrentPage,
+  getEditModal,
   getFileData,
   getFileName,
   getFileStatus,
@@ -26,8 +27,9 @@ export default function HomePage() {
   const isLoggedIn = useSelector((state) => getStatus(state));
   const dataFile = useSelector((state) => getFileData(state));
   const fileName = useSelector((state) => getFileName(state));
-  const currentPage = useSelector(state => getCurrentPage(state));
-  const showModal = useSelector(state => getShowModal(state));
+  const currentPage = useSelector((state) => getCurrentPage(state));
+  const showModal = useSelector((state) => getShowModal(state));
+  const showEditModal = useSelector(state => getEditModal(state));
 
   const uploadClick = (e) => {
     if (e.target.files.length) {
@@ -56,13 +58,12 @@ export default function HomePage() {
   };
 
   const paginate = (array, arrSize, pageNumber) => {
-  return array.slice((pageNumber - 1) * arrSize, pageNumber * arrSize);
-  }
+    return array.slice((pageNumber - 1) * arrSize, pageNumber * arrSize);
+  };
 
-
-  const perPage = 10
-  const paginatedArray = paginate(dataFile, perPage, currentPage)
-  const lengthOfArr = dataFile.length/ perPage
+  const perPage = 10;
+  const paginatedArray = paginate(dataFile, perPage, currentPage);
+  const lengthOfArr = Math.ceil(dataFile.length / perPage)
 
   return (
     <>
@@ -80,7 +81,7 @@ export default function HomePage() {
           </div>
         </>
       )}
-      {isLoggedIn || !isFileLoaded && (
+      {isLoggedIn && !isFileLoaded && (
         <>
           <Title title={"Upload your file "} />
           <div className={s.container}>
@@ -101,9 +102,8 @@ export default function HomePage() {
           <Pagination data={dataFile.length} lengthOfArr={lengthOfArr} />
         </>
       )}
-      {showModal && (
-        <Modal/>
-      )}
+      {showModal && <Modal />}
+      {showEditModal && <Modal saveButton={'Save'} cancelButton={'Cancel'} text={'Please update the status'} />}
     </>
   );
 }

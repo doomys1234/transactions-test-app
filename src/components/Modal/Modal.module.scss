@@ -1,7 +1,6 @@
 
 .overlay {
     position: fixed;
-    padding-top: 100px;
     top: 0;
     left: 0;
     width: 100vw;
@@ -25,6 +24,16 @@ border-radius: 10px;
     margin-bottom: 0px;
 }
 
+.label{
+    margin-top: 20px;
+}
+
+.selector{
+    margin-left: 5px;
+    padding: 5px;
+    border: 2px solid rgba(164, 157, 143, 0.403);
+    border-radius: 5px;
+}
 .wrapper{
     margin-top: 15px;
     display: flex;

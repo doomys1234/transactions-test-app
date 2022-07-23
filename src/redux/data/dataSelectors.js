@@ -4,4 +4,7 @@ export const getInitialData = state => state.data.initialData
 export const getFileStatus =  state=> state.data.isFileLoaded
 export const getFileData = state => state.data.dataFile
 export const getCurrentPage = state => state.data.page
-export const getShowModal =state =>state.data.showModal
+export const getShowModal = state => state.data.showModal
+export const getTransaction = state => state.data.transaction
+export const getEditModal = state => state.data.showEditModal
+export const getTransactionStatus = state=> state.data.transactionStatus
