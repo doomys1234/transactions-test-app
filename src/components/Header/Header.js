@@ -42,12 +42,12 @@ export default function Header() {
         {isLoggedIn && (
           <NavLink
             end
-            to="/contacts"
+            to="/transactions"
             className={({ isActive }) =>
               isActive ? `${s.active_link}` : `${s.link}`
             }
           >
-            Contacts
+            Transactions
           </NavLink>
         )}
       </div>

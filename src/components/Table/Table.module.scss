@@ -1,0 +1,23 @@
+table,th,td{
+    border: 2px solid black;
+    border-collapse: collapse;
+    
+}
+
+th,td{
+    padding: 15px;
+}
+.table{
+    width: 700px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+   
+    
+}
+.table_header{
+    padding: 10px 40px ;
+    border: 1px solid black;
+    background: rgba(157, 156, 156, 0.253);
+    
+}

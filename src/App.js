@@ -8,6 +8,7 @@ import LoginPage from './components/LoginPage/LoginPage';
 import Header from './components/Header/Header';
 
 import s from './App.module.scss';
+import Transactions from './components/Transactions/Transactions';
 // import ContactsPage from 'components/ContactsPage/ContactsPage';
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
     
         <Route path="register" element={<RegisterPage />} />
          <Route path="login" element={<LoginPage />} />
-        {/* <Route path="contacts" element={<ContactsPage />} /> */}
+        <Route path="transactions" element={<Transactions />} />
       </Routes>
 
       <ToastContainer

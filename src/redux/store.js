@@ -13,24 +13,28 @@ import authReducer from "./auth/authSlice";
 import { setupListeners } from "@reduxjs/toolkit/query";
 
 import createSagaMiddleware from "redux-saga";
-import { userWatcher } from "./auth/authSaga";
+import { rootWatcher } from "./rootSaga";
+import dataReducer  from "./data/dataSlice";
 
 const persistConfig = {
   key: "root",
   storage,
+  blacklist: ['token']
+  
 };
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authReducer),
+    data: dataReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER,'READATA'],
       },
-    }).concat(sagaMiddleware),
+    }).concat(sagaMiddleware,),
 //   middleware: (getDefaultMiddleware) => [
 //     ...getDefaultMiddleware({
 //       serializableCheck: {
@@ -39,6 +43,6 @@ export const store = configureStore({
 //     }),
 //   ],
 });
-sagaMiddleware.run(userWatcher);
+sagaMiddleware.run(rootWatcher);
 setupListeners(store.dispatch);
 export const persistor = persistStore(store);
