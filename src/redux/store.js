@@ -19,7 +19,7 @@ import dataReducer  from "./data/dataSlice";
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ['token']
+  whitelist: ['isLoggedIn','filteredItems','isLoaded',"transactionStatus","fileName","dataFile","user", "isFileLoaded" ]
   
 };
 const sagaMiddleware = createSagaMiddleware();
@@ -34,14 +34,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER,'READATA'],
       },
-    }).concat(sagaMiddleware,),
-//   middleware: (getDefaultMiddleware) => [
-//     ...getDefaultMiddleware({
-//       serializableCheck: {
-//         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//       },
-//     }),
-//   ],
+    }).concat(sagaMiddleware,)
 });
 sagaMiddleware.run(rootWatcher);
 setupListeners(store.dispatch);

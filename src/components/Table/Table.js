@@ -12,13 +12,17 @@ import {
 } from "../../redux/data/dataSlice";
 import PropTypes from "prop-types";
 import s from "./Table.module.scss";
-import { getFilteredItems } from "../../redux/data/dataSelectors";
+import {
+  getFilteredItems,
+  getInitialData,
+} from "../../redux/data/dataSelectors";
 
 export default function Table({ dataInfo }) {
   const dispatch = useDispatch();
   const location = useLocation();
   const path = location.pathname;
   const filteredItems = useSelector((state) => getFilteredItems(state));
+  const initialData = useSelector((state) => getInitialData(state));
 
   const onDeleteClick = (id) => {
     dispatch(modalToggle());
@@ -55,8 +59,25 @@ export default function Table({ dataInfo }) {
     dispatch(filterInitialData(selectorStatus));
   };
 
-  const onExportClick = (e) => {
-    const csv = Papa.unparse(filteredItems);
+  const onExportClick = () => {
+    let csv;
+    switch (path) {
+      case "/transactions":
+        csv = Papa.unparse(initialData);
+        makeFile(csv);
+        break;
+
+      case "/":
+        csv = Papa.unparse(filteredItems);
+        makeFile(csv);
+        break;
+
+      default:
+        break;
+    }
+  };
+
+  const makeFile = (csv) => {
     const blob = new Blob(["\ufeff", csv]);
     let csvURL = window.URL.createObjectURL(blob);
     let tempLink = document.createElement("a");

@@ -9,7 +9,6 @@ import {
   getEditModal,
   getInitialData,
   getShowModal,
-  getTransactionStatus,
 } from "../../redux/data/dataSelectors";
 import Title from "../Title/Title";
 import Table from "../Table/Table";

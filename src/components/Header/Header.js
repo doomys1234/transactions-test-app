@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import s from "./Header.module.scss";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
+import storage from "redux-persist/lib/storage";
 export default function Header() {
   const isLoggedIn = useSelector((state) => getStatus(state));
   const username = useSelector((state) => getUsername(state));
@@ -22,7 +23,7 @@ export default function Header() {
 
   const handleLogOut = () => {
     dispatch(logOutUser());
-    localStorage.removeItem("user");
+    storage.removeItem('persist:root')
     if (error) {
       return;
     }

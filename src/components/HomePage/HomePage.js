@@ -20,7 +20,6 @@ import { toast } from "react-toastify";
 import Table from "../Table/Table";
 import Pagination from "../Pagination/Pagination";
 import Modal from "../Modal/Modal";
-import { useEffect } from "react";
 
 export default function HomePage() {
   const navigate = useNavigate();
