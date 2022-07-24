@@ -12,6 +12,7 @@ import {
   getShowModal,
 } from "../../redux/data/dataSelectors";
 import Papa from "papaparse";
+import { Button } from '@chakra-ui/react'
 
 import icon from "../../images/icon.png";
 import s from "./HomePage.module.scss";
@@ -79,9 +80,9 @@ export default function HomePage() {
               Here you can upload the history of your transactions and manage
               them
             </p>
-            <button className={s.button} type="button" onClick={onTryClick}>
+            <Button size={"md"} colorScheme='blue' w={"150px"} className={s.button} type="button" onClick={onTryClick}>
               Try it now
-            </button>
+            </Button>
           </div>
         </>
       )}
