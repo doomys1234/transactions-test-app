@@ -17,7 +17,7 @@ import icon from "../../images/icon.png";
 import s from "./HomePage.module.scss";
 import Title from "../Title/Title";
 import { toast } from "react-toastify";
-import Table from "../Table/Table";
+import TablePage from "../Table/Table";
 import Pagination from "../Pagination/Pagination";
 import Modal from "../Modal/Modal";
 
@@ -102,7 +102,7 @@ export default function HomePage() {
       {isFileLoaded && (
         <>
           <Title title={fileName} />
-          <Table dataInfo={paginatedArray} />
+          <TablePage dataInfo={paginatedArray} />
           <Pagination data={dataFile.length} lengthOfArr={lengthOfArr} />
         </>
       )}

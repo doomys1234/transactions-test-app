@@ -10,6 +10,17 @@ import {
   filterInitialData,
   getData,
 } from "../../redux/data/dataSlice";
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  TableContainer,
+  Select,
+  Button
+} from '@chakra-ui/react'
 import PropTypes from "prop-types";
 import s from "./Table.module.scss";
 import {
@@ -17,7 +28,7 @@ import {
   getInitialData,
 } from "../../redux/data/dataSelectors";
 
-export default function Table({ dataInfo }) {
+export default function TablePage({ dataInfo }) {
   const dispatch = useDispatch();
   const location = useLocation();
   const path = location.pathname;
@@ -88,11 +99,11 @@ export default function Table({ dataInfo }) {
 
   return (
     <div>
-      <div className={s.label}>
-        <label htmlFor="status">Choose :</label>
-
-        <select
+      <div className={s.wrap}>
+        <Select
           className={s.selector}
+          size='md'
+          w={200}
           name="status"
           id="status"
           onChange={onSelectChange}
@@ -101,52 +112,57 @@ export default function Table({ dataInfo }) {
           <option value="Completed">Completed</option>
           <option value="Pending">Pending</option>
           <option value="Cancelled">Cancelled</option>
-        </select>
-        <button className={s.button} type="button" onClick={onExportClick}>
+        </Select>
+        <Button className={s.button} type="button" onClick={onExportClick} size={"md"} colorScheme='blue' ml={7}>
           Export file
-        </button>
+        </Button>
       </div>
-      <table className={s.table}>
-        <thead>
-          <tr>
-            <th className={s.table_header}>Type</th>
-            <th className={s.table_header}>Status</th>
-            <th className={s.table_header}>Client Name</th>
-            <th className={s.table_header}>Amount</th>
-            <th className={s.table_header}>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
+      <TableContainer>
+        <Table className={s.table} w={900}>
+          <Thead >
+          <Tr >
+            <Th className={s.table_header}>Type</Th>
+            <Th className={s.table_header}>Status</Th>
+            <Th className={s.table_header}>Client Name</Th>
+            <Th className={s.table_header}>Amount</Th>
+            <Th className={s.table_header}>Actions</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
           {dataInfo.map((item) => (
-            <tr key={item.TransactionId || item.id}>
-              <td>{item.Type}</td>
-              <td>{item.Status}</td>
-              <td>{item.ClientName}</td>
-              <td>{item.Amount}$</td>
-              <td>
+            <Tr key={item.TransactionId || item.id}>
+              <Td>{item.Type}</Td>
+              <Td>{item.Status}</Td>
+              <Td>{item.ClientName}</Td>
+              <Td>{item.Amount}$</Td>
+              <Td>
                 <div className={s.wrapper}>
-                  <button
+                  <Button
+                    size={'md'}
                     onClick={() => {
                       onEditClick(item.TransactionId);
                     }}
                     type="button"
+                    colorScheme='blue'
                   >
                     Edit
-                  </button>
-                  <button
+                  </Button>
+                  <Button
                     onClick={() => {
                       onDeleteClick(item.TransactionId);
                     }}
                     type="button"
+                    colorScheme='blue'
                   >
                     Delete
-                  </button>
+                  </Button>
                 </div>
-              </td>
-            </tr>
+              </Td>
+            </Tr>
           ))}
-        </tbody>
-      </table>
+        </Tbody>
+      </Table>
+      </TableContainer>
     </div>
   );
 }

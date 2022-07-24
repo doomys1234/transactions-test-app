@@ -9,6 +9,7 @@ import {
   getTransaction,
   getTransactionStatus,
 } from "../../redux/data/dataSelectors";
+import { Select,Button } from '@chakra-ui/react'
 import {
   deleteDataFile,
   deleteInitialData,
@@ -114,11 +115,15 @@ export default function Modal({ saveButton, cancelButton, text }) {
             {text || "Are you sure you want to delete this transaction?"}
           </p>
           {showEditModal && (
-            <div className={s.label}>
-              <label htmlFor="status">Choose :</label>
+            
+              
 
-              <select
-                className={s.selector}
+              <Select
+                size='md'
+          w={200}
+              mt={3}
+              ml={"auto"}
+              mr={"auto"}
                 name="status"
                 id="status"
                 onChange={onSelectChange}
@@ -126,26 +131,30 @@ export default function Modal({ saveButton, cancelButton, text }) {
                 <option value="Completed">Completed</option>
                 <option value="Pending">Pending</option>
                 <option value="Cancelled">Cancelled</option>
-              </select>
-            </div>
+              </Select>
+            
           )}
           <div className={s.wrapper}>
-            <button
+            <Button
               className={s.button}
               type="button"
               id="agree"
+              w={"100px"}
+              size={"md"} colorScheme='blue'
               onClick={onAgreeClick}
             >
               {saveButton || "Yes"}
-            </button>
-            <button
+            </Button>
+            <Button
+              w={"100px"}
+              size={"md"} colorScheme='blue'
               className={s.button}
               type="button"
               id="disagree"
               onClick={closeModal}
             >
               {cancelButton || "No"}
-            </button>
+            </Button>
           </div>
         </div>
       </div>

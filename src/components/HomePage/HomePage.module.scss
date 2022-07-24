@@ -36,11 +36,13 @@ flex-direction: column;
     box-shadow: 0px 4px 4px rgb(0 0 0 / 15%);
     border-color: transparent;
     border-radius: 4px;
-    background-color: rgb(255, 166, 0);
+    background-color: #3182ce;
     color: #ffff;
     cursor: pointer;
     &:hover{
-        background-color: rgb(254, 193, 78);
+        background-color:white;
+        color: #3182ce;
+        border: 2px solid #3182ce;
     }
     
     

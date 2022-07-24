@@ -5,11 +5,14 @@ table,th,td{
     
 }
 
-th,td{
-    padding: 15px;
+td{
+    padding: 10px 40px;
+    font-size: 14px;
 }
+
 .table{
-    width: 900px;
+    
+
     margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
@@ -17,9 +20,9 @@ th,td{
     
 }
 .table_header{
-    padding: 10px 40px ;
-    border: 1px solid black;
-    background: rgba(157, 156, 156, 0.253);
+    font-size: 13px;
+    padding: 15px 40px ;
+    background: rgba(70, 150, 255, 0.253);
     
 }
 .wrapper{
@@ -27,9 +30,13 @@ th,td{
     justify-content: space-evenly;
     align-items: center;
 }
-.label{
-    margin-left: 30px;
+.wrap{
+    display: flex;
+    margin-left: 20px;
 }
-.button{
-    margin-left: 15px;
-}
+// .label{
+//     margin-left: 30px;
+// }
+// .button{
+//     margin-left: 15px;
+// }

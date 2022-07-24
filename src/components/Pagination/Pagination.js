@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentPage } from "../../redux/data/dataSelectors";
 import { incrementPage, decrementPage } from "../../redux/data/dataSlice";
+import { Button } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 
 import s from "./Pagination.module.scss";
@@ -24,15 +25,27 @@ export default function Pagination({ lengthOfArr }) {
     <>
       <div>
         <div className={s.wrapper}>
-          <button className={s.button} type="button" onClick={decrementClick}>
+          <Button
+            size={"md"}
+            colorScheme="blue"
+            className={s.button}
+            type="button"
+            onClick={decrementClick}
+          >
             Prev page
-          </button>
+          </Button>
           <span>
             {currentPage} out of {lengthOfArr}
           </span>
-          <button className={s.button} type="button" onClick={incrementClick}>
+          <Button
+            size={"md"}
+            colorScheme="blue"
+            className={s.button}
+            type="button"
+            onClick={incrementClick}
+          >
             Next page
-          </button>
+          </Button>
         </div>
       </div>
     </>

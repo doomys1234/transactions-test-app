@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { loginUser } from "../../redux/auth/authSlice";
 import { getError } from "../../redux/auth/authSelectors";
 import { useForm } from "react-hook-form";
+import { Button } from '@chakra-ui/react'
 import Input from "../Input/Input";
 import Title from "../Title/Title";
 import s from "./Form.module.scss";
@@ -56,6 +57,7 @@ export default function LoginPage() {
             register={register}
             required={"This is required"}
             placeholder={"Email"}
+            mb={20}
           />
           <p>{errors.email?.message}</p>
           <Input
@@ -65,9 +67,7 @@ export default function LoginPage() {
             placeholder={"Password"}
           />
           <p>{errors.password?.message}</p>
-          <button className={s.button} type="submit">
-            Submit
-          </button>
+          <Button colorScheme='blue' size='md' ml={"auto"} mr={"auto"} w={150} type="submit">Submit</Button>
         </form>
       </div>
     </>

@@ -1,7 +1,8 @@
+import { Heading } from '@chakra-ui/react'
 import s from "./Title.module.scss";
 import PropTypes from "prop-types";
 export default function Title({ title }) {
-  return <h2 className={s.text}>{title}</h2>;
+  return <Heading as='h2' size='lg' className={s.text}>{title}</Heading>;
 }
 
 Title.propTypes = {

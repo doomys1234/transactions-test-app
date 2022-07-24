@@ -4,10 +4,10 @@
 .container{
     padding: 20px ;
     display: flex;
-    color: orange;
+    color: rgb(0, 0, 0);
     align-items: center;
     justify-content: space-between;
-    border-bottom: 2px solid pink;
+    border-bottom: 2px solid #3182ce7a;
     border-radius: 20px;
     
     
@@ -21,7 +21,7 @@
 }
 .welcome{
     margin-right: 30px;
-    color: pink;
+    color: #3182ce;
 }
 .wrapper{
     display: flex;
@@ -45,7 +45,7 @@
     margin-right: 40px;
     &:hover{
         transform: scale(1.1);
-        border: 2px solid pink;
+        border: 2px solid rgb(255, 192, 203);
         border-radius: 5px;
         color: pink;
 
@@ -56,8 +56,8 @@
     padding: 5px 20px;
     text-decoration: none;
     margin-right: 40px;
-    color: orange;
-    border-bottom: 2px solid orange;
+    color: #3182ce;
+    border-bottom: 2px solid #20598b;
     
         
 

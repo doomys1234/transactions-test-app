@@ -11,7 +11,7 @@ import {
   getShowModal,
 } from "../../redux/data/dataSelectors";
 import Title from "../Title/Title";
-import Table from "../Table/Table";
+import TablePage from "../Table/Table";
 import Modal from "../Modal/Modal";
 
 export default function Transactions() {
@@ -42,7 +42,7 @@ export default function Transactions() {
       ) : (
         <Title title={"Your recent transactions"} />
       )}
-      {isLoaded && <Table dataInfo={initialData} />}
+      {isLoaded && <TablePage dataInfo={initialData} />}
       {showModal && <Modal />}
       {showEditModal && (
         <Modal

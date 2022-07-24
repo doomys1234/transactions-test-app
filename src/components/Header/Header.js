@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { logOutUser } from "../../redux/auth/authSlice";
+import { Heading } from '@chakra-ui/react'
 import {
   getError,
   getStatus,
@@ -32,7 +33,7 @@ export default function Header() {
   return (
     <header className={s.container}>
       <div className={s.wrapper}>
-        <h1 className={s.title}>MoneyBook</h1>
+        <Heading as='h1' size='lg'className={s.title}>MoneyBook</Heading>
         <NavLink
           end
           to="/"
