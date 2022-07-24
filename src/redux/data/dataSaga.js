@@ -8,8 +8,13 @@ const getInitialData = () => {
 
 function* dataWorker() {
        try {
-           const {data} = yield call(getInitialData);
-        yield put(setInitialData(data))
+           const { data } = yield call(getInitialData);
+           const normaLizedData = data.map(item => {
+               if (!item.Status) {
+                   return {...item,Status:"Completed"}
+               }
+           })
+        yield put(setInitialData(normaLizedData))
     } catch (error) {
         console.log(error);
     }

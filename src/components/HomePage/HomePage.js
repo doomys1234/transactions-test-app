@@ -8,6 +8,7 @@ import {
   getFileData,
   getFileName,
   getFileStatus,
+  getFilteredItems,
   getShowModal,
 } from "../../redux/data/dataSelectors";
 import Papa from "papaparse";
@@ -19,6 +20,7 @@ import { toast } from "react-toastify";
 import Table from "../Table/Table";
 import Pagination from "../Pagination/Pagination";
 import Modal from "../Modal/Modal";
+import { useEffect } from "react";
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -30,7 +32,10 @@ export default function HomePage() {
   const currentPage = useSelector((state) => getCurrentPage(state));
   const showModal = useSelector((state) => getShowModal(state));
   const showEditModal = useSelector(state => getEditModal(state));
+  const filteredItems = useSelector(state => getFilteredItems(state));
 
+
+ 
   const uploadClick = (e) => {
     if (e.target.files.length) {
       const inputFile = e.target.files[0];
@@ -62,8 +67,8 @@ export default function HomePage() {
   };
 
   const perPage = 10;
-  const paginatedArray = paginate(dataFile, perPage, currentPage);
-  const lengthOfArr = Math.ceil(dataFile.length / perPage)
+  const paginatedArray = paginate(filteredItems, perPage, currentPage);
+  const lengthOfArr = Math.ceil(filteredItems.length / perPage)
 
   return (
     <>

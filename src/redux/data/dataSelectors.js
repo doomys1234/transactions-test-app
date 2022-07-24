@@ -7,4 +7,5 @@ export const getCurrentPage = state => state.data.page
 export const getShowModal = state => state.data.showModal
 export const getTransaction = state => state.data.transaction
 export const getEditModal = state => state.data.showEditModal
-export const getTransactionStatus = state=> state.data.transactionStatus
+export const getTransactionStatus = state => state.data.transactionStatus
+export const getFilteredItems = state=>state.data.filteredItems

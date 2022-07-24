@@ -1,4 +1,59 @@
 body{
     font-family: 'Lato', sans-serif;
+    margin: 0px;
+
+}
+button{
+    
+
+     padding: 5px 20px;
+    color: black;
+    background-color: #fff;
+    border: 2px solid rgba(164, 157, 143, 0.403);
+    border-radius: 5px;
+    text-decoration: none;
+    
+
+    
+    
+
+}
+button:hover{
+        transform: scale(1.1);
+        border: 2px solid pink;
+        border-radius: 5px;
+        color: pink;
+
+    }
+
+select{
+    margin-left: 5px;
+    padding: 5px;
+    border: 2px solid rgba(164, 157, 143, 0.403);
+    border-radius: 5px;
+}
+input{
+
+    height: 20px;
+    width: 100%;
+    padding: 11px;
+    border: 1px solid rgba(33,33,33,0.2);
+    border-radius: 4px;
+    outline: none;
+    
+
+}
+input:focus{
+border-color: orange;
+    }
+
+label{
+    
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.16;
+    letter-spacing: 0.01em;
+    margin-bottom: 20px;
+
 
 }

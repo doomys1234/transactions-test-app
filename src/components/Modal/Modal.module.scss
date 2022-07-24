@@ -28,12 +28,7 @@ border-radius: 10px;
     margin-top: 20px;
 }
 
-.selector{
-    margin-left: 5px;
-    padding: 5px;
-    border: 2px solid rgba(164, 157, 143, 0.403);
-    border-radius: 5px;
-}
+
 .wrapper{
     margin-top: 15px;
     display: flex;
@@ -41,20 +36,5 @@ border-radius: 10px;
     align-items: center;
 }
 
-.button{
-     padding: 5px 20px;
-    color: black;
-    background-color: #fff;
-    border: 2px solid rgba(164, 157, 143, 0.403);
-    border-radius: 5px;
-    text-decoration: none;
-    &:hover{
-        transform: scale(1.1);
-        border: 2px solid pink;
-        border-radius: 5px;
-        color: pink;
-
-    }
-}
 
 

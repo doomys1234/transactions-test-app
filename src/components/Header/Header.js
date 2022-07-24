@@ -1,31 +1,32 @@
 import { NavLink } from "react-router-dom";
 import { logOutUser } from "../../redux/auth/authSlice";
-import { getError, getStatus, getUsername } from "../../redux/auth/authSelectors";
+import {
+  getError,
+  getStatus,
+  getUsername,
+} from "../../redux/auth/authSelectors";
 import { useSelector, useDispatch } from "react-redux";
 import s from "./Header.module.scss";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 export default function Header() {
   const isLoggedIn = useSelector((state) => getStatus(state));
-    const username = useSelector((state) => getUsername(state));
-    const error = useSelector((state)=> getError(state))
-    const dispatch = useDispatch();
-    useEffect(() => {
-        if (error) {
-            toast.error(error.message)
-        }
-    },[error])
+  const username = useSelector((state) => getUsername(state));
+  const error = useSelector((state) => getError(state));
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (error) {
+      toast.error(error.message);
+    }
+  }, [error]);
 
-  
-    const handleLogOut = () => {
-      dispatch(logOutUser());
-      localStorage.removeItem("user")
-        if (error) {
-            return
-        }
-        toast.success('You successfully logged out')
-      
-      
+  const handleLogOut = () => {
+    dispatch(logOutUser());
+    localStorage.removeItem("user");
+    if (error) {
+      return;
+    }
+    toast.success("You successfully logged out");
   };
   return (
     <header className={s.container}>

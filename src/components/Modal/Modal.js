@@ -27,9 +27,9 @@ export default function Modal({ saveButton, cancelButton, text }) {
   const showEditModal = useSelector((state) => getEditModal(state));
   const showModal = useSelector((state) => getShowModal(state));
   const transaction = useSelector((state) => getTransaction(state));
-    const dataFile = useSelector((state) => getFileData(state));
-    const initialData = useSelector(state=> getInitialData(state))
-    
+  const dataFile = useSelector((state) => getFileData(state));
+  const initialData = useSelector((state) => getInitialData(state));
+
   const transactionStatus = useSelector((state) => getTransactionStatus(state));
 
   useEffect(() => {
@@ -63,45 +63,38 @@ export default function Modal({ saveButton, cancelButton, text }) {
     closeModal();
   };
 
-  const onButtonClick = (e) => {
-    const buttonId = e.target.id;
-    switch (buttonId) {
-      case "agree":
-            if (path === "/transactions") {
-                if (e.target.textContent === "Save") {
-                const newData = initialData.map((item) => {
-                    if (item.TransactionId === transaction.TransactionId) {
-                        
-            return { ...item, Status: transactionStatus };
-            }
-            return item;
-          });
-            dispatch(setInitialData(newData));
-            closeModal()
-            return
-            }
-          dispatch(deleteInitialData(transaction.TransactionId));
+  const mapNewData = (arr) => {
+    return arr.map((item) => {
+      if (item.TransactionId === transaction.TransactionId) {
+        return { ...item, Status: transactionStatus };
+      }
+      return item;
+    });
+  };
+
+  const onAgreeClick = (e) => {
+    switch (path) {
+      case "/transactions":
+        if (e.target.textContent === "Save") {
+          const newData = mapNewData(initialData);
+          dispatch(setInitialData(newData));
           closeModal();
           return;
         }
-        if (e.target.textContent === "Save") {
-          const newData = dataFile.map((item) => {
-            if (item.TransactionId === transaction.TransactionId) {
-              return { ...item, Status: transactionStatus };
-            }
-            return item;
-          });
-            dispatch(setData(newData));
-            closeModal()
-            return
-        }
-        
+        dispatch(deleteInitialData(transaction.TransactionId));
+        closeModal();
 
+        break;
+      case "/":
+        if (e.target.textContent === "Save") {
+          const newData = mapNewData(dataFile);
+          dispatch(setData(newData));
+          closeModal();
+          return;
+        }
         dispatch(deleteDataFile(transaction.TransactionId));
         closeModal();
-        break;
-      case "disagree":
-        closeModal();
+
         break;
 
       default:
@@ -109,7 +102,7 @@ export default function Modal({ saveButton, cancelButton, text }) {
     }
   };
 
-    const onSelectChange = (e) => {
+  const onSelectChange = (e) => {
     const selectorStatus = e.target.value;
     dispatch(setTransactionStatus(selectorStatus));
   };
@@ -118,14 +111,19 @@ export default function Modal({ saveButton, cancelButton, text }) {
       <div className={s.overlay} onClick={onBackdropClose} id="backdrop">
         <div className={s.modal}>
           <p className={s.text}>
-            {text || 'Are you sure you want to delete this transaction?'}
+            {text || "Are you sure you want to delete this transaction?"}
           </p>
           {showEditModal && (
             <div className={s.label}>
               <label htmlFor="status">Choose :</label>
 
-              <select className={s.selector} name="status" id="status" onChange={onSelectChange}>
-                <option value="Successful">Successful</option>
+              <select
+                className={s.selector}
+                name="status"
+                id="status"
+                onChange={onSelectChange}
+              >
+                <option value="Completed">Completed</option>
                 <option value="Pending">Pending</option>
                 <option value="Cancelled">Cancelled</option>
               </select>
@@ -136,7 +134,7 @@ export default function Modal({ saveButton, cancelButton, text }) {
               className={s.button}
               type="button"
               id="agree"
-              onClick={onButtonClick}
+              onClick={onAgreeClick}
             >
               {saveButton || "Yes"}
             </button>
@@ -144,7 +142,7 @@ export default function Modal({ saveButton, cancelButton, text }) {
               className={s.button}
               type="button"
               id="disagree"
-              onClick={onButtonClick}
+              onClick={closeModal}
             >
               {cancelButton || "No"}
             </button>

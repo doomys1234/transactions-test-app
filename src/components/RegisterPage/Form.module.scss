@@ -1,6 +1,8 @@
+
+
 .container{
+    margin-top: 20px;
     display: block;
-    
    margin-left: auto;
    margin-right: auto;
    margin-bottom: 70px;
@@ -12,6 +14,7 @@
 }
 
 .form{
+
     display: flex;
     justify-content: center;
    margin-bottom: 20px;
@@ -26,17 +29,6 @@
     letter-spacing: 0.01em;
     margin-bottom: 20px;
 
-}
-.input{
-    height: 20px;
-    width: 100%;
-    padding: 11px;
-    border: 1px solid rgba(33,33,33,0.2);
-    border-radius: 4px;
-    outline: none;
-    &:focus{
-border-color: orange;
-    }
 }
 .button{
     display: block;

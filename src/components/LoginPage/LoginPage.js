@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { loginUser } from '../../redux/auth/authSlice';
 import {getError} from '../../redux/auth/authSelectors';
 import Title from "../Title/Title"
-import s from './LoginPage.module.scss'
+import s from './Form.module.scss'
 
 export default function LoginPage() {
 

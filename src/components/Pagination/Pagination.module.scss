@@ -5,19 +5,8 @@
     align-items: center;
 }
 .button{
-    padding: 5px 20px;
+   
     margin-right: 10px;
     margin-left: 10px;
-    color: black;
-    background-color: #fff;
-    border: 2px solid rgba(164, 157, 143, 0.403);
-    border-radius: 5px;
-    text-decoration: none;
-    &:hover{
-        transform: scale(1.1);
-        border: 2px solid pink;
-        border-radius: 5px;
-        color: pink;
-
-    }
+    
 }
