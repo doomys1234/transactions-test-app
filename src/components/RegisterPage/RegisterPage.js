@@ -3,52 +3,45 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../redux/auth/authSlice";
 import { toast } from "react-toastify";
+import { useForm } from "react-hook-form";
 import Title from "../Title/Title";
 import s from "./Form.module.scss";
 import { getError } from "../../redux/auth/authSelectors";
+import Input from "../Input/Input";
 
 export default function RegisterPage() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const {
+    register,
+    handleSubmit,
+    resetField,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+    },
+  });
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const error = useSelector((state) => getError(state));
 
-  const handleChange = (e) => {
-    const name = e.currentTarget.name;
-    const value = e.currentTarget.value;
-    switch (name) {
-      case "name":
-        setName(value);
-        break;
-      case "email":
-        setEmail(value);
-        break;
-      case "password":
-        setPassword(value);
-        break;
-      default:
-        return;
-    }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (name === "" || email === "" || password === "") {
-      toast.warn("Please fill all fields");
-      return;
-    }
-    dispatch(registerUser({ name, email, password }));
+  const onSubmit = (data) => {
+    clearForm();
+    dispatch(registerUser(data));
     if (error) {
       toast.error(error.message);
       return;
     }
     toast.success("Welcome on a board");
     navigate("/login");
-    setName("");
-    setEmail("");
-    setPassword("");
+  };
+
+  const clearForm = () => {
+    resetField("name");
+    resetField("email");
+    resetField("password");
   };
 
   return (
@@ -56,40 +49,17 @@ export default function RegisterPage() {
       <Title title={"Register to our app"} />
 
       <div className={s.container}>
-        <form className={s.form} onSubmit={handleSubmit} autoComplete="off">
-          <label className={s.label}>
-            Name
-            <input
-              className={s.input}
-              onChange={handleChange}
-              type={name}
-              name="name"
-              autoFocus
-              value={name}
-            ></input>
-          </label>
-          <label className={s.label}>
-            Email
-            <input
-              className={s.input}
-              onChange={handleChange}
-              type={email}
-              name="email"
-              autoFocus
-              value={email}
-            ></input>
-          </label>
-          <label className={s.label}>
-            Password
-            <input
-              className={s.input}
-              onChange={handleChange}
-              type={password}
-              name="password"
-              autoFocus
-              value={password}
-            ></input>
-          </label>
+        <form
+          className={s.form}
+          onSubmit={handleSubmit(onSubmit)}
+          autoComplete="off"
+        >
+          <Input label={"name"} register={register} required={"This is required"} placeholder={"Name"} />
+          <p>{errors.name?.message}</p>
+          <Input label={"email"} register={register} required={"This is required"} placeholder={"Email"} />
+          <p>{errors.email?.message}</p>
+          <Input label={"password"} register={register} required={"This is required"} placeholder={"Password"} />
+          <p>{errors.password?.message}</p>
           <button className={s.button} type="submit">
             Submit
           </button>
