@@ -18,7 +18,7 @@ export default function Table({ dataInfo }) {
   const dispatch = useDispatch();
   const location = useLocation();
   const path = location.pathname;
-  const filteredItems = useSelector(state=>getFilteredItems(state))
+  const filteredItems = useSelector((state) => getFilteredItems(state));
 
   const onDeleteClick = (id) => {
     dispatch(modalToggle());
@@ -56,17 +56,14 @@ export default function Table({ dataInfo }) {
   };
 
   const onExportClick = (e) => {
-    const csv = Papa.unparse(filteredItems)
-    console.log(csv);
-
-    
+    const csv = Papa.unparse(filteredItems);
     const blob = new Blob(["\ufeff", csv]);
     let csvURL = window.URL.createObjectURL(blob);
-let tempLink = document.createElement('a');
-tempLink.href = csvURL;
-tempLink.setAttribute('download', 'text.csv');
-tempLink.click();
-  }
+    let tempLink = document.createElement("a");
+    tempLink.href = csvURL;
+    tempLink.setAttribute("download", "text.csv");
+    tempLink.click();
+  };
 
   return (
     <div>
@@ -84,7 +81,9 @@ tempLink.click();
           <option value="Pending">Pending</option>
           <option value="Cancelled">Cancelled</option>
         </select>
-        <button className={s.button} type="button" onClick={onExportClick}>Export file</button>
+        <button className={s.button} type="button" onClick={onExportClick}>
+          Export file
+        </button>
       </div>
       <table className={s.table}>
         <thead>
