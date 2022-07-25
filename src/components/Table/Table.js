@@ -9,6 +9,8 @@ import {
   filterDataFile,
   filterInitialData,
   getData,
+  setData,
+  setFileLoadingStatus,
 } from "../../redux/data/dataSlice";
 import {
   Table,
@@ -97,6 +99,11 @@ export default function TablePage({ dataInfo }) {
     tempLink.click();
   };
 
+  const onDeleteFileClick = () => {
+    dispatch(setData([]))
+    dispatch(setFileLoadingStatus())
+  }
+
   return (
     <div>
       <div className={s.wrap}>
@@ -116,6 +123,9 @@ export default function TablePage({ dataInfo }) {
         <Button className={s.button} type="button" onClick={onExportClick} size={"md"} colorScheme='blue' ml={7}>
           Export file
         </Button>
+        {path === '/'&& <Button className={s.button} type="button" onClick={onDeleteFileClick} size={"md"} colorScheme='blue' ml={7}>
+          Delete file
+        </Button>}
       </div>
       <TableContainer>
         <Table className={s.table} w={900}>

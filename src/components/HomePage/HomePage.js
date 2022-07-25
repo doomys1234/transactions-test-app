@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getStatus } from "../../redux/auth/authSelectors";
-import { setData, setFileName } from "../../redux/data/dataSlice";
+import { setData, setFileLoadingStatus, setFileName } from "../../redux/data/dataSlice";
 import {
   getCurrentPage,
   getEditModal,
@@ -54,6 +54,7 @@ export default function HomePage() {
       header: true,
       complete: function (results) {
         dispatch(setData(results.data));
+        dispatch(setFileLoadingStatus())
       },
     });
   };

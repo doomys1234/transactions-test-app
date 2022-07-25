@@ -71,37 +71,5 @@ export default function LoginPage() {
         </form>
       </div>
     </>
-    //     <>
-    //         <Title title={"Please log in to our app"} />
-    //        <div className={s.container}>
-    //   <form className={s.form} onSubmit={handleSubmit} autoComplete="off">
-    //     <label className={s.label}>
-    //       Email
-    //       <input
-    //         className={s.input}
-    //         onChange={handleChange}
-    //         type={email}
-    //         name="email"
-    //         autoFocus
-    //         value={email}
-    //       ></input>
-    //     </label>
-    //     <label className={s.label}>
-    //       Password
-    //       <input
-    //         className={s.input}
-    //         onChange={handleChange}
-    //         type={password}
-    //         name="password"
-    //         autoFocus
-    //         value={password}
-    //       ></input>
-    //     </label>
-    //     <button className={s.button} type="submit">
-    //       Submit
-    //     </button>
-    //   </form>
-    // </div>
-    //    </>
   );
 }

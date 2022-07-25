@@ -7,6 +7,8 @@ import { useForm } from "react-hook-form";
 import Title from "../Title/Title";
 import s from "./Form.module.scss";
 import { getError } from "../../redux/auth/authSelectors";
+import { Button } from '@chakra-ui/react'
+
 import Input from "../Input/Input";
 
 export default function RegisterPage() {
@@ -60,9 +62,7 @@ export default function RegisterPage() {
           <p>{errors.email?.message}</p>
           <Input label={"password"} register={register} required={"This is required"} placeholder={"Password"} />
           <p>{errors.password?.message}</p>
-          <button className={s.button} type="submit">
-            Submit
-          </button>
+          <Button colorScheme='blue' size='md' ml={"auto"} mr={"auto"} w={150} type="submit">Submit</Button>
         </form>
       </div>
     </>

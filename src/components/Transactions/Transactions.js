@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getStatus } from "../../redux/auth/authSelectors";
 import { getData } from "../../redux/data/dataSlice";
+import MoonLoader from "react-spinners/MoonLoader"
 import {
   getDataStatus,
   getEditModal,
@@ -13,6 +14,11 @@ import {
 import Title from "../Title/Title";
 import TablePage from "../Table/Table";
 import Modal from "../Modal/Modal";
+
+const override = {
+  display: "block",
+  margin: "40 auto",
+};
 
 export default function Transactions() {
   const dispatch = useDispatch();
@@ -42,6 +48,8 @@ export default function Transactions() {
       ) : (
         <Title title={"Your recent transactions"} />
       )}
+      {!isLoaded && <MoonLoader color={"blue"} cssOverride={override} loading={!isLoaded} size={50} />
+}
       {isLoaded && <TablePage dataInfo={initialData} />}
       {showModal && <Modal />}
       {showEditModal && (

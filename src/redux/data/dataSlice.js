@@ -26,7 +26,6 @@ export const dataReducer = createSlice({
     setData: (state, { payload }) => {
       state.dataFile = payload;
       state.filteredItems = payload;
-      state.isFileLoaded = true;
     },
     setFileName: (state, { payload }) => {
       state.fileName = payload;
@@ -40,7 +39,7 @@ export const dataReducer = createSlice({
       });
     },
     deleteDataFile: (state, { payload }) => {
-      state.filteredItems = state.dataFile.filter(
+      state.filteredItems = state.filteredItems.filter(
         (item) => item.TransactionId !== payload
       );
     },
@@ -75,6 +74,9 @@ export const dataReducer = createSlice({
     setTransactionStatus: (state, { payload }) => {
       state.transactionStatus = payload;
     },
+    setFileLoadingStatus: (state) => {
+      state.isFileLoaded= !state.isFileLoaded
+    }
   },
 });
 export const getData = () => ({ type: "GETDDATA" });
@@ -93,5 +95,6 @@ export const {
   editModalToggle,
   setTransactionStatus,
   filterDataFile,
+  setFileLoadingStatus,
 } = dataReducer.actions;
 export default dataReducer.reducer;
